@@ -1,42 +1,16 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { useRoute } from "@react-navigation/native";
 
-export default function SearchScreen({ navigation }) {
+export default function HomeScreen({ navigation }) {
     const display_ETF_Price = (etf_ticker) => {
         navigation.navigate("Details", { etf_ticker: etf_ticker });
     };
-
-    const route = useRoute();
-    const RiskType = route.params.RiskType;
-    console.log(RiskType);
 
     etfs_A = ["XLK", "IBIT", "SOXX", "XLF", "VCR", "IHE", "SCHH", "XLE"];
 
     etfs_B = ["GOVT", "VPU", "SOXX", "JEPQ", "XLK", "VCR", "IRBO", "SCHH"];
 
-    if (RiskType == "High") {
-        col = etfs_A;
-    } else {
-        col = etfs_B;
-    }
-    // rest.stocks
-    //     .aggregates(
-    //         "XLF",
-    //         1,
-    //         "day",
-    //         "2024-03-22",
-    //         "2024-03-24",
-    //         "true",
-    //         "asc",
-    //         1
-    //     )
-    //     .then((data) => {
-    //         console.log(data.results[0].c);
-    //     })
-    //     .catch((e) => {
-    //         console.error("An error happened:", e);
-    //     });
+    col = etfs_A;
 
     return (
         <View style={styles.container}>
@@ -47,8 +21,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[0]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>18.1%</Text>
+                <Text style={styles.cell}>25%</Text>
             </View>
             <View style={styles.row}>
                 <TouchableOpacity
@@ -57,8 +31,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[1]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>15.7%</Text>
+                <Text style={styles.cell}>15%</Text>
             </View>
             <View style={styles.row}>
                 <TouchableOpacity
@@ -67,8 +41,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[2]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>21.3%</Text>
+                <Text style={styles.cell}>15%</Text>
             </View>
             <View style={styles.row}>
                 <TouchableOpacity
@@ -77,8 +51,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[3]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>12.0%</Text>
+                <Text style={styles.cell}>15%</Text>
             </View>
             <View style={styles.row}>
                 <TouchableOpacity
@@ -87,8 +61,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[4]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>10.8%</Text>
+                <Text style={styles.cell}>10%</Text>
             </View>
             <View style={styles.row}>
                 <TouchableOpacity
@@ -97,8 +71,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[5]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>9.6%</Text>
+                <Text style={styles.cell}>5%</Text>
             </View>
             <View style={styles.row}>
                 <TouchableOpacity
@@ -107,8 +81,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[6]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>2.4%</Text>
+                <Text style={styles.cell}>5%</Text>
             </View>
             <View style={styles.row}>
                 <TouchableOpacity
@@ -117,8 +91,8 @@ export default function SearchScreen({ navigation }) {
                 >
                     <Text>{col[7]}</Text>
                 </TouchableOpacity>
-                <Text style={styles.cell}>C %</Text>
-                <Text style={styles.cell}>G %</Text>
+                <Text style={styles.cell}>2.8%</Text>
+                <Text style={styles.cell}>5%</Text>
             </View>
         </View>
     );

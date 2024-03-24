@@ -1,0 +1,93 @@
+{
+  "name": "@polygon.io/client-js",
+  "version": "7.3.2",
+  "description": "Isomorphic Javascript client for Polygon.io Stocks, Forex, and Crypto APIs",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "type": "module",
+  "exports": {
+    "types": "./dist/main.d.ts",
+    "import": "./dist/main.js",
+    "require": "./dist/main.cjs"
+  },
+  "scripts": {
+    "test": "mocha",
+    "test:watch": "mocha --watch",
+    "format": "prettier --write '**/*.ts'",
+    "build": "rm -rf ./dist && tsup src/main.ts --dts --format cjs,esm --minify",
+    "generate-doc": "typedoc src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polygon-io/client-js.git"
+  },
+  "keywords": [
+    "polygon.io",
+    "stock api",
+    "options api",
+    "forex api",
+    "crypto api"
+  ],
+  "contributors": [
+    {
+      "name": "Julien Prugne",
+      "email": "julien@webeleon.dev"
+    },
+    {
+      "name": "Katie Adams",
+      "email": "katie@polygon.io"
+    },
+    {
+      "name": "Andrew Bailey",
+      "email": "andrew.bailey@polygon.io"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/polygon-io/client-js/issues"
+  },
+  "homepage": "https://github.com/polygon-io/client-js#readme",
+  "dependencies": {
+    "cross-fetch": "^3.1.4",
+    "query-string": "^7.0.1",
+    "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.22",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.11",
+    "@types/sinon": "^10.0.6",
+    "@types/websocket": "^1.0.4",
+    "chai": "^4.3.4",
+    "events": "^3.3.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "lodash": "^4.17.21",
+    "mocha": "^9.1.3",
+    "prettier": "^2.5.1",
+    "sinon": "^12.0.1",
+    "ts-node": "^10.9.1",
+    "tsup": "^6.7.0",
+    "typedoc": "^0.22.10",
+    "typescript": "^4.5.2",
+    "ws": "^8.13.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "workspaces": [
+    "./dist/*",
+    "./sandbox"
+  ],
+  "engines": {
+    "node": ">=16"
+  }
+}

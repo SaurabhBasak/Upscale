@@ -1,0 +1,124 @@
+## [7.3.2](https://github.com/polygon-io/client-js/compare/v7.3.1...v7.3.2) (2023-10-05)
+### Bug Fixes
+* Rearrange request config types so they inherit global options for pagination and trace
+
+## [7.3.1](https://github.com/polygon-io/client-js/compare/v7.3.0...v7.3.1) (2023-09-15)
+### Bug Fixes
+* Fix unintended change to top level response object that returned results array instead of results object
+
+### Other Changes
+* Improved test coverage for response object
+
+## [7.3.0](https://github.com/polygon-io/client-js/compare/v7.2.6...v7.3.0) (2023-09-11)
+### New Feature
+* Update README with pagination and trace modes
+* Added request tracing and API pagination support
+
+## [7.2.6](https://github.com/polygon-io/client-js/compare/v7.2.5...v7.2.6) (2023-08-11)
+### Bug Fixes
+* Export universal snapshot types
+* Add next_url to Aggregates enpdoints response types
+* Update examples to use import syntax instead of require
+
+## [7.2.4](https://github.com/polygon-io/client-js/compare/v7.2.3...v7.2.4) (2023-06-14)
+### Bug Fixes
+* Update snapshot min to support n and t
+* Exports and Updates Options WebSocket Event Types
+* Universal snapshot
+
+## [7.2.3](https://github.com/polygon-io/client-js/compare/v7.2.2...v7.2.3) (2023-05-15)
+### Bug Fixes
+* Fix typing issue with optional headers Launchpad Typescript definitions
+* Export types from requests file
+* Make Launchpad Headers optional to support metered product
+
+## [7.2.2](https://github.com/polygon-io/client-js/compare/v7.2.1...v7.2.2) (2023-04-19)
+### Bug Fixes
+* Remove examples and unneccesary files from npm package
+
+## [7.2.1](https://github.com/polygon-io/client-js/compare/v7.2.0...v7.2.1) (2023-04-12)
+### Bug Fixes
+* Update snapshot response type to reflect recent additions
+
+## [7.2.0](https://github.com/polygon-io/client-js/compare/v7.1.1...v7.2.0) (2023-04-07)
+### New Feature
+* Support Dual Module Formats so that this package can be used with CommonJS 
+
+## [7.1.1](https://github.com/polygon-io/client-js/v7.0.1...v7.1.1) (2023-03-20)
+
+### Bug Fixes
+* Fix misspelled filling_url to filing_url
+* Preserve JSON errors returned from the server
+
+## [7.1.0](https://github.com/polygon-io/client-js/compare/v7.0.3...v7.1.0) (2023-03-13)
+### New Feature
+* Indices
+
+## [7.0.3](https://github.com/polygon-io/client-js/v7.0.2...v7.0.3) (2023-02-21)
+
+### Bug Fixes
+* Fix grouped daily forex url
+
+## [7.0.2](https://github.com/polygon-io/client-js/v7.0.1...v7.0.2) (2023-02-15)
+
+### Bug Fixes
+* Wrap fetch call in try/catch and bubble up network errors
+
+## [6.2.1](https://github.com/polygon-io/client-js/v6.2.0...v6.2.1) (2023-02-15)
+
+### Bug Fixes
+* Wrap fetch call in try/catch and bubble up network errors
+
+## [7.0.1](https://github.com/polygon-io/client-js/v7.0.0...v7.0.1) (2023-02-01)
+
+### Bug Fixes
+* Add ticker_root, postal_code, and round_lot attributes to the Ticker Details response types
+
+
+## [7.0.0](https://github.com/polygon-io/client-js/v6.2.0...v7.0.0) (2023-01-25)
+
+> Description
+
+### Upgrade Steps
+
+#### Node Version
+To use this version in a node project you will need to use node 16 or above. This change was made to support exporting ES Modules instead of CommonJS Modules. The ES Modules exported by this package should be fully supported in Node 16+.
+
+#### Headers and Request Options
+The headers parameter has been replaced with a request options parameter which accepts headers. If you were passing headers to an endpoint, your code should change from
+
+```javascript
+rest.forex.previousClose("C:EURUSD", {}, myHeadersObject)
+```
+
+to
+
+```javascript
+rest.forex.previousClose("C:EURUSD", {}, { headers: myHeadersObject })
+```
+
+This change was made to allow additional request options to be passed to the request. You can pass any of the [available request options for fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options) in the request options object, and they will be passed through to the fetch request.
+
+You can also pass request options when initializing the client like:
+
+```javascript
+const rest = restClient("API KEY", "https://api.polygon.io", { headers: myHeaders });
+```
+
+These will be applied to each request unless overridden by options passed directly to the endpoint function.
+
+You can find more examples in the [configuration examples file](./examples/rest/configuration.js).
+
+### Breaking Changes
+* Node 16+ compilation target
+* Pass entire request options as optional parameter instead of just headers
+
+### New Features
+* Allow request options to be passed globally to the client, or individually to endpoint functions
+
+### Bug Fixes
+* Pass api key in header instead of query parameter to improve security
+
+### Other Changes
+* Improved test coverage
+* Additional examples
