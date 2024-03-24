@@ -28,14 +28,18 @@ export default function TickerDetails({ route }) {
         };
 
         // Manually specify the API key
-        const apiKey = "CdlcmKnaGSxnTSYQw3fW9zxUXZjmVo8y"; 
+        const apiKey = "Your_API_Key"; 
         fetchData(apiKey); // Call fetchData with the API key
     }, [etf_ticker]);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Ticker Details Screen {etf_price !== null ? etf_price : "Loading..."}</Text>
-        </View>
+        <Text style={[styles.title, { fontSize: 35, fontWeight: 'bold', color: '#FF5733' }]}>
+            ETF Closing Price: {etf_price !== null ? etf_price : "Loading..."}
+        </Text>
+    </View>
+    
+
     );
 }
 
