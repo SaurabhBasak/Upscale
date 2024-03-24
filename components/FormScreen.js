@@ -12,6 +12,7 @@ export default function FormScreen() {
 
   const handleAnswer = (question, choice) => {
     setAnswers({ ...answers, [question]: choice });
+    console.log(answers);
   };
 
   return (
