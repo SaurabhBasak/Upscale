@@ -1,3 +1,4 @@
+// HomeScreen.js
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
@@ -9,34 +10,35 @@ export default function HomeScreen({ navigation }) {
     };
 
     const TableType = (RiskType) => {
-        navigation.navigate("Search", { RiskType });
-    }
+        navigation.navigate("Search", { RiskType }); // Pass the selected risk type to the SearchScreen
+    };
 
     const route = useRoute();
-    console.log(route.params); // Check if 'profile' is present in params
-
     const profile = route.params?.profile || ""; // Access 'profile' safely
 
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Profile: {profile}</Text>
-            <Text>Home Screen</Text>
-
-            <Text style={styles.title}>Settings Screen</Text>
             <TouchableOpacity
                 style={[styles.button, styles.buttonPrimary]}
                 onPress={handleOpenForm}
             >
                 <Text style={styles.buttonText}>Open Form</Text>
             </TouchableOpacity>
-            {profile != "" &&
+            {profile !== "" &&
                 (profile == "High Risk, High Return" ? (
-                    <TouchableOpacity onPress={() => TableType("High")}>
-                        <Text>High Risk</Text>
+                    <TouchableOpacity
+                        style={[styles.button, styles.buttonSecondary]}
+                        onPress={() => TableType("High")} // Pass "High" as the risk type
+                    >
+                        <Text style={styles.buttonText}>High Risk</Text>
                     </TouchableOpacity>
                 ) : (
-                    <TouchableOpacity onPress={() => TableType("Low")}>
-                        <Text>Low Risk</Text>
+                    <TouchableOpacity
+                        style={[styles.button, styles.buttonSecondary]}
+                        onPress={() => TableType("Low")} // Pass "Low" as the risk type
+                    >
+                        <Text style={styles.buttonText}>Low Risk</Text>
                     </TouchableOpacity>
                 ))}
         </View>
@@ -48,25 +50,31 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "#f8f9fa", // Light gray background color
     },
     text: {
-        fontSize: 24,
+        fontSize: 18,
         fontWeight: "bold",
+        marginBottom: 20,
     },
     button: {
-        paddingVertical: 10,
+        paddingVertical: 12,
         paddingHorizontal: 20,
-        borderRadius: 5,
-        marginBottom: 10,
+        borderRadius: 8,
+        marginBottom: 15,
+        backgroundColor: "#007bff", // Blue button color
+        alignItems: "center",
+        justifyContent: "center",
     },
     buttonPrimary: {
-        backgroundColor: "blue",
+        backgroundColor: "#007bff", // Blue button color
     },
     buttonSecondary: {
-        backgroundColor: "gray",
+        backgroundColor: "#6c757d", // Gray button color
     },
     buttonText: {
         color: "white",
-        fontSize: 18,
+        fontSize: 16,
+        fontWeight: "bold",
     },
 });

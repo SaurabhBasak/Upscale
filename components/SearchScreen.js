@@ -1,99 +1,32 @@
+// SearchScreen.js
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
-export default function HomeScreen({ navigation }) {
-    const display_ETF_Price = (etf_ticker) => {
-        navigation.navigate("Details", { etf_ticker: etf_ticker });
+export default function SearchScreen({ navigation, route }) {
+    const displayETFPrice = (etf_ticker) => {
+        navigation.navigate("Details", { etf_ticker }); // Navigate to the Details screen with the ETF ticker
     };
-
-    etfs_A = ["XLK", "IBIT", "SOXX", "XLF", "VCR", "IHE", "SCHH", "XLE"];
-
-    etfs_B = ["GOVT", "VPU", "SOXX", "JEPQ", "XLK", "VCR", "IRBO", "SCHH"];
-
-    col = etfs_A;
+    
+    const riskType = route.params?.RiskType;
+    const etfs = (riskType === 'High') 
+        ? ["XLK", "IBIT", "SOXX", "XLF", "VCR", "IHE", "SCHH", "XLE"]
+        : ["GOVT", "VPU", "SOXX", "JEPQ", "XLK", "VCR", "IRBO", "SCHH"];
 
     return (
         <View style={styles.container}>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[0])}
-                >
-                    <Text>{col[0]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>18.1%</Text>
-                <Text style={styles.cell}>25%</Text>
-            </View>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[1])}
-                >
-                    <Text>{col[1]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>15.7%</Text>
-                <Text style={styles.cell}>15%</Text>
-            </View>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[2])}
-                >
-                    <Text>{col[2]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>21.3%</Text>
-                <Text style={styles.cell}>15%</Text>
-            </View>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[3])}
-                >
-                    <Text>{col[3]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>12.0%</Text>
-                <Text style={styles.cell}>15%</Text>
-            </View>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[4])}
-                >
-                    <Text>{col[4]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>10.8%</Text>
-                <Text style={styles.cell}>10%</Text>
-            </View>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[5])}
-                >
-                    <Text>{col[5]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>9.6%</Text>
-                <Text style={styles.cell}>5%</Text>
-            </View>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[6])}
-                >
-                    <Text>{col[6]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>2.4%</Text>
-                <Text style={styles.cell}>5%</Text>
-            </View>
-            <View style={styles.row}>
-                <TouchableOpacity
-                    style={styles.cell}
-                    onPress={() => display_ETF_Price(col[7])}
-                >
-                    <Text>{col[7]}</Text>
-                </TouchableOpacity>
-                <Text style={styles.cell}>2.8%</Text>
-                <Text style={styles.cell}>5%</Text>
-            </View>
+            {etfs.map((etf, index) => (
+                <View key={index} style={styles.row}>
+                    <TouchableOpacity
+                        style={styles.cell}
+                        onPress={() => displayETFPrice(etf)}
+                    >
+                        <Text>{etf}</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.cell}>18.1%</Text>
+                    <Text style={styles.cell}>25%</Text>
+                </View>
+            ))}
         </View>
     );
 }

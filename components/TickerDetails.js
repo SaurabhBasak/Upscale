@@ -28,7 +28,7 @@ export default function TickerDetails({ route }) {
         };
 
         // Manually specify the API key
-        const apiKey = "Your_API_Key"; 
+        const apiKey = "CdlcmKnaGSxnTSYQw3fW9zxUXZjmVo8y"; 
         fetchData(apiKey); // Call fetchData with the API key
     }, [etf_ticker]);
 
