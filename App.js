@@ -7,6 +7,7 @@ import HomeScreen from './components/HomeScreen';
 import SearchScreen from './components/SearchScreen';
 import SettingsScreen from './components/SettingsScreen';
 import Navbar from './components/Navbar';
+import FormScreen from './components/FormScreen';
 
 
 const Stack = createStackNavigator();
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Form" component={FormScreen} />
       </Stack.Navigator>
       <Navbar />
     </NavigationContainer>
