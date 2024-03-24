@@ -32,7 +32,7 @@ export default function FormScreen() {
     const profile = highRisk ? 'High Risk, High Return' : 'Low Risk, Low Return';
   
     // Pass profile as a parameter to HomeScreen when navigating
-    navigation.navigate('Home', { profile });
+    navigation.navigate('Home', { profile }, { highRisk });
   
     // Show confirmation message
     Alert.alert('Submission Successful', `Profile updated to: ${profile}`);

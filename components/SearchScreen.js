@@ -1,16 +1,25 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
-export default function HomeScreen({ navigation }) {
+export default function SearchScreen({ navigation }) {
     const display_ETF_Price = (etf_ticker) => {
         navigation.navigate("Details", { etf_ticker: etf_ticker });
-    }
+    };
+
+    const route = useRoute();
+    const RiskType = route.params.RiskType;
+    console.log(RiskType);
 
     etfs_A = ["XLK", "IBIT", "SOXX", "XLF", "VCR", "IHE", "SCHH", "XLE"];
 
     etfs_B = ["GOVT", "VPU", "SOXX", "JEPQ", "XLK", "VCR", "IRBO", "SCHH"];
 
-    col = etfs_A;
+    if (RiskType == "High") {
+        col = etfs_A;
+    } else {
+        col = etfs_B;
+    }
     // rest.stocks
     //     .aggregates(
     //         "XLF",
