@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { POLYGON_API_KEY } from "@env";
 import { restClient } from "@polygon.io/client-js";
 
 export default function TickerDetails({ route }) {
@@ -8,9 +7,9 @@ export default function TickerDetails({ route }) {
     const [etf_price, setEtfPrice] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData = async (apiKey) => { // Accept apiKey as a parameter
             try {
-                const rest = restClient(POLYGON_API_KEY);
+                const rest = restClient(apiKey); // Use the provided API key
                 const data = await rest.stocks.aggregates(
                     etf_ticker,
                     1,
@@ -27,13 +26,20 @@ export default function TickerDetails({ route }) {
                 setEtfPrice(null); // Reset the etf_price state if there's an error
             }
         };
-        fetchData();
+
+        // Manually specify the API key
+        const apiKey = "Your_API_Key"; 
+        fetchData(apiKey); // Call fetchData with the API key
     }, [etf_ticker]);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Ticker Details Screen {etf_price !== null ? etf_price : "Loading..."}</Text>
-        </View>
+        <Text style={[styles.title, { fontSize: 35, fontWeight: 'bold', color: '#FF5733' }]}>
+            ETF Closing Price: {etf_price !== null ? etf_price : "Loading..."}
+        </Text>
+    </View>
+    
+
     );
 }
 

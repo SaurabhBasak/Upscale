@@ -5,10 +5,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from './components/HomeScreen';
 import SearchScreen from './components/SearchScreen';
-import SettingsScreen from './components/SettingsScreen';
-import TickerDetails from './components/TickerDetails';
 import Navbar from './components/Navbar';
 import FormScreen from './components/FormScreen';
+import TickerDetails from './components/TickerDetails';
 
 
 const Stack = createStackNavigator();
@@ -19,7 +18,6 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Form" component={FormScreen} />
         <Stack.Screen name="Details" component={TickerDetails} />
       </Stack.Navigator>

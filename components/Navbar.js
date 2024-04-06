@@ -18,9 +18,7 @@ const NavBar = () => {
       <TouchableOpacity onPress={() => navigateToScreen('Search')}>
         <Ionicons name="search" size={32} color="black" style={styles.icon} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigateToScreen('Settings')}>
-        <Ionicons name="settings" size={32} color="black" style={styles.icon} />
-      </TouchableOpacity>
+   
     </View>
   );
 };
